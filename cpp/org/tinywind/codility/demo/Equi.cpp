@@ -5,26 +5,28 @@
 using namespace std;
 /**
  * https://codility.com/demo/take-sample-test/
+ * http://blog.codility.com/2011/03/solutions-for-task-equi.html
+ * Find an index in an array such that its prefix sum equals its suffix sum.
  *
  * @author tinywind
- * score: unknown
+ * score: 100
  */
 int solution(vector<int> &A) {
 	long lastLeft = 0L;
 	long lastRight = 0L;
-	size_t lastP = -1;
-	for (size_t p = 0; p < A.size(); p++) {
+	long lastP = -1;
+	for (long p = 0; p < A.size(); p++) {
 		long left = 0L;
 		long right = 0L;
 
 		if (lastP <= 0)
-			for (size_t i = 0; i < p; i++)
+			for (long i = 0; i < p; i++)
 				left += A[i];
 		else
 			left = lastLeft + A[lastP];
 
 		if (lastP < 0)
-			for (size_t i = p + 1; i < A.size(); i++)
+			for (long i = p + 1; i < A.size(); i++)
 				right += A[i];
 		else if (lastP + 1 < A.size())
 			right = lastRight - A[lastP + 1];
