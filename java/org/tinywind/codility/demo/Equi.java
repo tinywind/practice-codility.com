@@ -1,14 +1,16 @@
-package org.tinywind.codility;
+package org.tinywind.codility.demo;
 
 import java.util.Arrays;
 
 /**
  * https://codility.com/demo/take-sample-test/
+ * http://blog.codility.com/2011/03/solutions-for-task-equi.html
+ * Find an index in an array such that its prefix sum equals its suffix sum.
  *
  * @author http://tinywind.blog.me/220752016674
  * score: 100
  */
-public class Demo {
+public class Equi {
     public static void main(String[] args) {
         p(1082132608, 0, 1082132608);
         p(-1, 1, 0);
