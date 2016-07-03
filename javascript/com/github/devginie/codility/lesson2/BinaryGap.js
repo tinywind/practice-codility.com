@@ -1,6 +1,6 @@
 /**
- * https://codility.com/programmers/task/odd_occurrences_in_array/
- * Find value that occurs in odd number of elements.
+ * https://codility.com/demo/take-sample-test/binary_gap/
+ * Given a positive integer N, returns the length of its longest binary gap. 
  *
  * @author devginie
  * score: 100
