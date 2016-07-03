@@ -15,7 +15,7 @@ int solution(vector<int> &A) {
 	long lastLeft = 0L;
 	long lastRight = 0L;
 	long lastP = -1;
-	for (long p = 0; p < A.size(); p++) {
+	for (long p = 0; p < (long) A.size(); p++) {
 		long left = 0L;
 		long right = 0L;
 
@@ -26,9 +26,9 @@ int solution(vector<int> &A) {
 			left = lastLeft + A[lastP];
 
 		if (lastP < 0)
-			for (long i = p + 1; i < A.size(); i++)
+			for (long i = p + 1; i < (long) A.size(); i++)
 				right += A[i];
-		else if (lastP + 1 < A.size())
+		else if (lastP + 1 < (long) A.size())
 			right = lastRight - A[lastP + 1];
 		else
 			right = 0L;
