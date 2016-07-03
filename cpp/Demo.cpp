@@ -2,6 +2,11 @@
 #include <vector>
 using namespace std;
 
+/**
+ * https://codility.com/demo/take-sample-test/
+ *
+ * @author tinywind
+ */
 int solution(vector<int> &A) {
     long lastLeft = 0L;
     long lastRight = 0L;

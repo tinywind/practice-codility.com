@@ -23,8 +23,7 @@ public class OddOccurrencesInArray {
     private static int solution(int[] A) {
         TreeSet<Integer> unpaired = new TreeSet<>();
         for (int i : A) {
-            if (unpaired.contains(i)) {
-                unpaired.remove(i);
+            if (unpaired.remove(i)) {
                 continue;
             }
             unpaired.add(i);
