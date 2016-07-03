@@ -1,4 +1,4 @@
-package org.tinywind.codility.com.lesson2;
+package org.tinywind.codility.lesson2;
 
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -8,6 +8,7 @@ import java.util.TreeSet;
  * Find value that occurs in odd number of elements.
  *
  * @author http://tinywind.blog.me/220752072231
+ * score: 100
  */
 public class OddOccurrencesInArray {
     public static void main(String[] args) {

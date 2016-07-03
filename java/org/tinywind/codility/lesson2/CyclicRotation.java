@@ -1,4 +1,4 @@
-package org.tinywind.codility.com.lesson2;
+package org.tinywind.codility.lesson2;
 
 import java.util.Arrays;
 
@@ -7,6 +7,7 @@ import java.util.Arrays;
  * Rotate an array to the right by a given number of steps.
  *
  * @author http://tinywind.blog.me/220752085958
+ * score: 100
  */
 public class CyclicRotation {
     public static void main(String[] args) {

@@ -1,10 +1,11 @@
-package org.tinywind.codility.com.lesson1;
+package org.tinywind.codility.lesson1;
 
 /**
  * https://codility.com/programmers/task/binary_gap/
  * Find longest sequence of zeros in binary representation of an integer.
  *
  * @author http://tinywind.blog.me/220752090983
+ * score: 100
  */
 public class BinaryGap {
     public static void main(String[] args) {

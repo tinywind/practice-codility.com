@@ -6,6 +6,7 @@ using namespace std;
  * https://codility.com/demo/take-sample-test/
  *
  * @author tinywind
+ * score: unknown
  */
 int solution(vector<int> &A) {
     long lastLeft = 0L;

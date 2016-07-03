@@ -1,4 +1,4 @@
-package org.tinywind.codility.com;
+package org.tinywind.codility;
 
 import java.util.Arrays;
 
@@ -6,6 +6,7 @@ import java.util.Arrays;
  * https://codility.com/demo/take-sample-test/
  *
  * @author http://tinywind.blog.me/220752016674
+ * score: 100
  */
 public class Demo {
     public static void main(String[] args) {

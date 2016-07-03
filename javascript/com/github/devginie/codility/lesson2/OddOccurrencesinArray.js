@@ -3,18 +3,22 @@
  * Find value that occurs in odd number of elements.
  *
  * @author devginie, tinywind
+ * score: 100
  * */
 function solution(A) {
-    var unpaired = [];
+    var unpaired = {};
     for (var i = 0; i < A.length; i++) {
-        var index = unpaired.indexOf(A[i]);
-        if (index >= 0) {
-            unpaired.splice(index, 1);
+        if (unpaired[A[i]]) {
+            unpaired[A[i]] = false;
             continue;
         }
-        unpaired.push(A[i]);
+        unpaired[A[i]] = true;
     }
-    return unpaired[0];
+    for (var k in unpaired) {
+        if (unpaired.hasOwnProperty(k) && unpaired[k])
+            return parseInt(k);
+    }
+    return -1;
 }
 
 function p() {
