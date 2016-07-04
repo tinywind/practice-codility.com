@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.TreeSet;
 
 /**
- * https://codility.com/demo/take-sample-test/S
+ * https://codility.com/programmers/task/frog_river_one/
  * Find the earliest time when a frog can jump to the other side of a river.
  *
  * @author tinywind
