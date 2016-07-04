@@ -3,7 +3,7 @@ package org.tinywind.codility.lesson5;
 import java.util.Arrays;
 
 /**
- * https://codility.com/programmers/task/perm_check/
+ * https://codility.com/programmers/task/passing_cars/
  * Count the number of passing cars on the road.
  *
  * @author tinywind
