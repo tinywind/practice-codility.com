@@ -20,7 +20,7 @@ public class GenomicRangeQuery {
     }
 
     // letters A(1) C(2) G(3) T(4)
-    /* Correctness(40%) Performance(33%) */
+    /* Correctness(100%) Performance(33%) */
     private static int[] solution(String S, int[] P, int[] Q) {
         int[] result = new int[P.length];
         Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
