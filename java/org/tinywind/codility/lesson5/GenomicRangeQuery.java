@@ -1,8 +1,6 @@
 package org.tinywind.codility.lesson5;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * https://codility.com/programmers/task/genomic_range_query/
@@ -19,9 +17,49 @@ public class GenomicRangeQuery {
         System.out.println("S(" + S + ") P(" + Arrays.toString(P) + ") Q(" + Arrays.toString(Q) + "): " + Arrays.toString(solution(S, P, Q)));
     }
 
+    /* Correctness(100%) Performance(66%) */
+    /* Detected time complexity: O(N + M)*/
+    private static int[] solution(String S, int[] P, int[] Q) {
+        int[] result = new int[P.length];
+
+        char[] trans = new char[S.length()]; // index, char
+        int transSize = 0;
+        int[] transPointMap = new int[S.length()]; // S's index, trans's index
+        for (int i = 0, last = 'Z'; i < S.length(); transPointMap[i] = transSize - 1, i++) {
+            char c = S.charAt(i);
+            if (last != c) {
+                trans[transSize++] = c;
+                last = c;
+            }
+        }
+
+        int[][] valueMap = new int[transSize][transSize]; // trans's Index, trans's Index, minimal nucleotide
+        for (int i = 0; i < P.length; i++) {
+            int start = P[i] <= Q[i] ? transPointMap[P[i]] : transPointMap[Q[i]];
+            int end = P[i] <= Q[i] ? transPointMap[Q[i]] : transPointMap[P[i]];
+
+            int value = valueMap[start][end];
+            if (value != 0) {
+                result[i] = value;
+                continue;
+            }
+
+            int minChar = 'T';
+            for (int j = start; j <= end; j++) {
+                if (trans[j] < minChar)
+                    minChar = trans[j];
+                int min = minChar == 'A' ? 1 : minChar == 'C' ? 2 : minChar == 'G' ? 3 : 4;
+                valueMap[start][j] = min;
+            }
+
+            result[i] = valueMap[start][end];
+        }
+        return result;
+    }
+
     // letters A(1) C(2) G(3) T(4)
     /* Correctness(100%) Performance(33%) */
-    private static int[] solution(String S, int[] P, int[] Q) {
+    /*private static int[] solution(String S, int[] P, int[] Q) {
         int[] result = new int[P.length];
         Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
 
@@ -59,5 +97,5 @@ public class GenomicRangeQuery {
         }
 
         return result;
-    }
+    }*/
 }
