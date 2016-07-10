@@ -1,25 +1,73 @@
 package org.tinywind.codility.lesson5;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * https://codility.com/programmers/task/genomic_range_query/
  * Find the minimal nucleotide from a range of sequence DNA.
  *
  * @author tinywind
+ *         score: 100
  */
 public class GenomicRangeQuery {
     public static void main(String[] args) {
         p("CAGCCTA", new int[]{2, 5, 0}, new int[]{4, 5, 6});
+        p("AC", new int[]{0, 0, 1}, new int[]{0, 1, 1});
     }
 
     private static void p(String S, int[] P, int[] Q) {
         System.out.println("S(" + S + ") P(" + Arrays.toString(P) + ") Q(" + Arrays.toString(Q) + "): " + Arrays.toString(solution(S, P, Q)));
     }
 
+    /* refer: http://rafal.io/posts/codility-genomic-range-query.html */
+    private static int[] solution(String S, int[] P, int[] Q) {
+        int[] result = new int[P.length];
+        int[][] trans = new int[S.length() + 1][4]; // index, char
+        int transSize = 1;
+        int[] transPointMap = new int[S.length()]; // S's index, trans's index
+        for (int i = 0, last = 'Z'; i < S.length(); transPointMap[i] = transSize - 1, i++) {
+            char c = S.charAt(i);
+            if (last != c) {
+                trans[transSize][c == 'A' ? 0 : c == 'C' ? 1 : c == 'G' ? 2 : 3] = 1;
+                last = c;
+
+                if (transSize >= 1)
+                    for (int j = 0; j < 4; j++)
+                        trans[transSize][j] += trans[transSize - 1][j];
+
+                transSize++;
+            }
+        }
+
+        for (int i = 0; i < P.length; i++) {
+            if (P[i] == Q[i]) {
+                char c = S.charAt(P[i]);
+                result[i] = (c == 'A' ? 0 : c == 'C' ? 1 : c == 'G' ? 2 : 3) + 1;
+                continue;
+            }
+
+            int[] start, end;
+            if (P[i] <= Q[i]) {
+                start = trans[transPointMap[P[i]] - 1];
+                end = trans[transPointMap[Q[i]]];
+            } else {
+                start = trans[transPointMap[Q[i]] - 1];
+                end = trans[transPointMap[P[i]]];
+            }
+            for (int j = 0; j < 4; j++) {
+                if (end[j] - start[j] > 0) { // if exist more than once,
+                    result[i] = j + 1;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
     /* Correctness(100%) Performance(66%) */
     /* Detected time complexity: O(N + M)*/
-    private static int[] solution(String S, int[] P, int[] Q) {
+    /*private static int[] solution(String S, int[] P, int[] Q) {
         int[] result = new int[P.length];
 
         char[] trans = new char[S.length()]; // index, char
@@ -55,7 +103,7 @@ public class GenomicRangeQuery {
             result[i] = valueMap[start][end];
         }
         return result;
-    }
+    }*/
 
     // letters A(1) C(2) G(3) T(4)
     /* Correctness(100%) Performance(33%) */
