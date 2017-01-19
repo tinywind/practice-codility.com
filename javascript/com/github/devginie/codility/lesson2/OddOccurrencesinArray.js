@@ -6,8 +6,10 @@
  * score: 100
  * */
 function solution(A) {
-    var unpaired = {};
-    for (var i = 0; i < A.length; i++) {
+    var unpaired = {},
+    i, max;
+    
+    for (i = 0, max = A.length; i < max; i += 1) {
         if (unpaired[A[i]]) {
             unpaired[A[i]] = false;
             continue;
@@ -15,23 +17,9 @@ function solution(A) {
         unpaired[A[i]] = true;
     }
     for (var k in unpaired) {
-        if (unpaired.hasOwnProperty(k) && unpaired[k])
-            return parseInt(k);
+        if (unpaired.hasOwnProperty(k) && unpaired[k]) {
+            return Number(k);
+        }
     }
     return -1;
-}
-
-function p() {
-    var arr = [];
-    for (var k in arguments) {
-        if (arguments.hasOwnProperty(k))
-            arr.push(arguments[k]);
-    }
-    console.log("A(" + arr + ") : " + solution(arr));
-}
-
-function test() {
-    p(2, 1, 2, 3, 3);
-    p(10, 10, 1);
-    p(10);
 }
